@@ -6,6 +6,9 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.decorators import user_passes_test
+from django.shortcuts import render
+
 
 # Function-based view: list all books
 def list_books(request):
@@ -36,4 +39,23 @@ def register(request):
         form = UserCreationForm()
     return render(request, 'relationship_app/register.html', {'form': form})
 
+
+
+
+# Admin view
+@user_passes_test(lambda u: u.is_authenticated and u.profile.role == 'Admin')
+def admin_view(request):
+    return render(request, 'relationship_app/admin_view.html')
+
+
+# Librarian view
+@user_passes_test(lambda u: u.is_authenticated and u.profile.role == 'Librarian')
+def librarian_view(request):
+    return render(request, 'relationship_app/librarian_view.html')
+
+
+# Member view
+@user_passes_test(lambda u: u.is_authenticated and u.profile.role == 'Member')
+def member_view(request):
+    return render(request, 'relationship_app/member_view.html')
 
