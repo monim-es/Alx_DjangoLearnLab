@@ -42,3 +42,6 @@ if __name__ == "__main__":
     get_books_by_author("John Doe")
     get_books_in_library("Central Library")
     get_librarian_for_library("Central Library")
+
+
+#Librarian.objects.get(library=
