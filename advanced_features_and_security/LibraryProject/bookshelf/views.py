@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import user_passes_test, permission_required
-from .forms import BookForm
+from .forms import ExampleForm as BookForm
 
 # Function-based view: list all books
 @permission_required('relationship_app.can_view', raise_exception=True)
