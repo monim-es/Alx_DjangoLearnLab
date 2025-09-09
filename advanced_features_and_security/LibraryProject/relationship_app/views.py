@@ -15,9 +15,11 @@ from django import forms
 
 
 # Function-based view: list all books
+@permission_required('relationship_app.can_view')
 def list_books(request):
     books = Book.objects.all()
     return render(request, 'relationship_app/list_books.html', {'books': books})
+
 
 # Class-based view: details of a specific library
 class LibraryDetailView(DetailView):
@@ -73,7 +75,7 @@ class BookForm(forms.ModelForm):
         fields = ['title', 'author']
 
 # Add Book view
-@permission_required('relationship_app.can_add_book')
+@permission_required('relationship_app.can_create')
 def add_book(request):
     if request.method == 'POST':
         form = BookForm(request.POST)
@@ -84,8 +86,9 @@ def add_book(request):
         form = BookForm()
     return render(request, 'relationship_app/book_form.html', {'form': form, 'action': 'Add'})
 
-# Edit Book view
-@permission_required('relationship_app.can_change_book')
+
+# Edit Book - require can_edit
+@permission_required('relationship_app.can_edit')
 def edit_book(request, pk):
     book = Book.objects.get(pk=pk)
     if request.method == 'POST':
@@ -97,8 +100,8 @@ def edit_book(request, pk):
         form = BookForm(instance=book)
     return render(request, 'relationship_app/book_form.html', {'form': form, 'action': 'Edit'})
 
-# Delete Book view
-@permission_required('relationship_app.can_delete_book')
+# Delete Book - require can_delete
+@permission_required('relationship_app.can_delete')
 def delete_book(request, pk):
     book = Book.objects.get(pk=pk)
     if request.method == 'POST':
