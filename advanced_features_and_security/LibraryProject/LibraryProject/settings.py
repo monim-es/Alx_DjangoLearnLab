@@ -156,3 +156,4 @@ CSP_DEFAULT_SRC = ("'self'",)
 CSP_STYLE_SRC = ("'self'", 'fonts.googleapis.com')  # adjust as needed
 CSP_SCRIPT_SRC = ("'self'", 'cdnjs.cloudflare.com')  # adjust if using JS libs
 CSP_IMG_SRC = ("'self'", 'data:')
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
