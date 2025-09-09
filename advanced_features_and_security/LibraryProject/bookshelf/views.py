@@ -4,11 +4,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import user_passes_test, permission_required
-from django import forms
+from .forms import BookForm
 
 # Function-based view: list all books
 @permission_required('relationship_app.can_view', raise_exception=True)
-def book_list(request):  # ✅ renamed to match expected test name
+def book_list(request):   
     books = Book.objects.all()
     return render(request, 'relationship_app/list_books.html', {'books': books})
 
@@ -51,11 +51,7 @@ def member_view(request):
     return render(request, 'relationship_app/member_view.html')
 
 
-# Form for creating/updating books
-class BookForm(forms.ModelForm):
-    class Meta:
-        model = Book
-        fields = ['title', 'author']
+
 
 
 # Add Book view
