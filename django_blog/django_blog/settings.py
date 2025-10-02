@@ -70,7 +70,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'django_blog.wsgi.application'
 
 
-# Database
+# Database  PORT USER
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
