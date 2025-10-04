@@ -46,3 +46,7 @@ class CommentForm(forms.ModelForm):
         if len(c) > 5000:
             raise forms.ValidationError("Comment is too long.")
         return c
+    
+
+
+#TagWidget()
