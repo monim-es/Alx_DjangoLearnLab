@@ -8,3 +8,7 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.username
+
+    @property
+    def following_users(self):
+        return self.following.all()
