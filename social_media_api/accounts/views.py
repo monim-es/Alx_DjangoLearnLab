@@ -69,3 +69,7 @@ class UnfollowUserView(APIView):
             return Response({'error': 'User not found'}, status=404)
         request.user.followers.remove(target_user)
         return Response({'success': f'You have unfollowed {target_user.username}'})
+
+
+
+# "CustomUser.objects.all()"
