@@ -88,3 +88,6 @@ class UnlikePostView(APIView):
 
         like.delete()
         return Response({'success': 'Post unliked'})
+
+
+# generics.get_object_or_404(Post, pk=pk)
