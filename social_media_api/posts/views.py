@@ -40,3 +40,7 @@ class FeedView(generics.ListAPIView):
         user = self.request.user
         following_users = user.following_users
         return Post.objects.filter(author__in=following_users).order_by('-created_at')
+
+
+
+# following.all()
